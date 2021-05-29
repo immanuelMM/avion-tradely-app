@@ -1,0 +1,36 @@
+<% content_for :title, "Log In / Tradely" %>
+<!-- Log In Page -->
+<div id="moderator-login" class="page">
+    <div class="page-background"></div>
+    <div class="page-foreground">
+        <header id="brand">
+          <a href="/" class="no-underline">
+            <p class="logo bloop">Tradely</p>
+          </a>
+        </header>
+        <main id="form">
+            <p id="emoji">🔐</p>
+            <p id="header">Log In</p>
+            <p id="sub-header">Please enter your email and password.</p>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= render "users/shared/error_messages", resource: resource %>
+
+              <div class="field">
+                <%= f.email_field :email, autocomplete: "email", placeholder: "Email Address", required: true %>
+              </div>
+
+              <div class="field">
+                <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", onfocus: "switchNotes()", onblur: "switchNotes()", required: true %>
+              </div>
+              
+              <p class="note">Don't have an account? <%= link_to "Sign Up", new_user_registration_path, class: "in-text" %></p>
+              <p class="note" style="display: none;">Forgot your password? <%= link_to "Reset Password", new_user_password_path, class: "in-text" %></p>
+
+              <div class="actions absolute">
+                <%= f.submit "Log In", class: "cta" %>
+              </div>
+            <% end %>
+        </main>
+    </div>
+</div>
+

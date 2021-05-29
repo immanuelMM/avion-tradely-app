@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Trade anywhere, everywhere / Tradely" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Access the stock market from the palm of your hand. Monitor your investments in real-time and reach your goals. Become an investor now!" %>">
+		<meta property="og:title" content="<%= content_for?(:title) ? yield(:title) : "Trade anywhere, everywhere / Tradely" %>">
+		<meta property="og:description" content="<%= content_for?(:description) ? yield(:description) : "Access the stock market from the palm of your hand. Monitor your investments in real-time and reach your goals. Become an investor now!" %>"/>
+    <meta property="og:image" content="https://tradely-project.herokuapp.com/og.png"/>
+		<meta property="og:type" content='website'/>
+		<meta property="og:url" content='<%= request.original_url %>'/>
+    
+		<link rel="shortcut icon" href="/favicon.ico"/>
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag "/fontawesome/web/css/all.css", media: "all", "data-turbolinks-track" => "true" %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!-- Page Content -->
+    <div id="layer-background" class="<%= yield(:layer_background_class) %>"></div>
+    <div id="layer-foreground" class="<%= yield(:layer_foreground_class) %>">
+      <%= yield %>
+    </div>
+
+    <!-- Flash Notice -->
+		<% if flash.present? %>
+      <% flash.reverse_each do |key, value| %>
+        <p class="notice-float <%= yield(:notice_float_position) %>"><%= value.split(". ").each { |sentence| sentence.capitalize }.join(". ") %></p>
+      <% end %>
+		<% end %>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+#table {
+    padding: 0;
+    margin: 0 0 124px;
+    overflow: auto;
+}
+
+#table.market,
+#table.buyer-portfolio {
+    margin: 24px 0 124px;
+}
+
+#table .row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+#table.buyers .row {
+    grid-template-columns: 1fr repeat(3, 2fr) 1fr 1fr;
+}
+
+#table.buyer-portfolio .row {
+    grid-template-columns: repeat(6, 2fr);
+}
+
+#table.brokers .row {
+    grid-template-columns: 1fr repeat(3, 2fr);
+}
+
+#table.market .row {
+    grid-template-columns: 4fr repeat(3, 2fr);
+}
+
+#table.transactions .row {
+    grid-template-columns: 1fr repeat(2, 2fr) 1fr 1fr 2fr;
+}
+
+#table .row {
+    padding: 24px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#table .row:last-child {
+    border-bottom: none;
+}
+
+#table .column {
+    margin: 0;
+    padding: 0 24px;
+    font-size: 10pt;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#table #headers .column {
+    font-weight: bold;
+    font-size: 10pt;
+}
